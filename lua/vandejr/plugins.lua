@@ -1,27 +1,27 @@
 -- Colors
 function Colors()
-    themes = {
-        'catppuccin',
-        'catppuccin-frappe',
-        'catppuccin-macchiato',
-        'catppuccin-mocha',
-        'kanagawa',
-        'kanagawa-dragon',
-        'kanagawa-wave',
-        'tokyonight',
-        'tokyonight-moon',
-        'tokyonight-night',
-        'tokyonight-storm'
-    }
+  themes = {
+    'catppuccin',
+    'catppuccin-frappe',
+    'catppuccin-macchiato',
+    'catppuccin-mocha',
+    'kanagawa',
+    'kanagawa-dragon',
+    'kanagawa-wave',
+    'tokyonight',
+    'tokyonight-moon',
+    'tokyonight-night',
+    'tokyonight-storm'
+  }
 
-    local theme = themes[math.random(1, #themes)]
+  local theme = themes[math.random(1, #themes)]
 
-    print('Choosed theme: ' .. theme)
+  print('Choosed theme: ' .. theme)
 
-    vim.cmd.colorscheme(theme)
+  vim.cmd.colorscheme(theme)
 
-    vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+  vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
 
 end
 
@@ -36,7 +36,6 @@ local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
@@ -47,7 +46,7 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-  
+
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
@@ -58,6 +57,18 @@ require('mason-lspconfig').setup({
   handlers = {
     lsp_zero.default_setup,
   }
+})
+
+--
+local cmp = require('cmp')
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
+    ['<Right>'] = cmp.mapping.confirm({select = true}),
+    ['<Left>'] = cmp.mapping.abort(),
+    ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+    ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+  })
 })
 
 -- Telescope
@@ -72,13 +83,14 @@ vim.keymap.set('n', '<leader>ph', telescope.help_tags, {})
 
 -- Treesitter
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'c', 'lua', 'javascript', 'typescript', 'rust', 'dart', 'go', 'java' },
+  ensure_installed = { 'c', 'lua', 'javascript', 'typescript', 'rust', 'dart', 'go', 'java' },
 
-    sync_install = false,
- 
-    auto_install = true,
+  sync_install = false,
 
-    highlight = {
-    	enable = true
-    }
+  auto_install = true,
+
+  highlight = {
+    enable = true
+  }
 }
+

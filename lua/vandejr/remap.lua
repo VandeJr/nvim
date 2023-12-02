@@ -11,3 +11,4 @@ vim.keymap.set('n', '<leader><Tab>', vim.cmd.tabnew)
 vim.keymap.set('n', '<S-Tab>', vim.cmd.tabclose)
 vim.keymap.set('n', '<Tab>', vim.cmd.tabnext)
 vim.keymap.set('n', '<M-Tab>', vim.cmd.tabprev)
+
