@@ -12,3 +12,24 @@ vim.keymap.set('n', '<S-Tab>', vim.cmd.tabclose)
 vim.keymap.set('n', '<Tab>', vim.cmd.tabnext)
 vim.keymap.set('n', '<M-Tab>', vim.cmd.tabprev)
 
+vim.keymap.set('n', '<leader>`', function()
+  vim.cmd('belowright split')
+  vim.cmd('resize10')
+  vim.cmd('term')
+end)
+
+
+local isLow = false
+vim.keymap.set('n', '<C-`>', function()
+  if isLow then
+    vim.cmd('resize10')
+  else
+    vim.cmd('resize1')
+  end
+  isLow = not isLow
+end)
+
+vim.keymap.set('n', 'Q', vim.cmd.quit)
+
+vim.keymap.set('t', '<leader><CR>', [[<C-\><c-n>]])
+
