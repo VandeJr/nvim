@@ -31,9 +31,16 @@ vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 set_indent(2)
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'java',
+  pattern = '*.java',
   callback = function()
     set_indent(4)
+  end
+})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = '*.java',
+  callback = function()
+    local output = vim.fn.system { 'mvn', 'compile' }
   end
 })
 
