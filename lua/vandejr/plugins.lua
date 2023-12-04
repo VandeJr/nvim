@@ -64,8 +64,8 @@ local cmp = require('cmp')
 
 cmp.setup({
   mapping = cmp.mapping.preset.insert({
-    ['<Right>'] = cmp.mapping.confirm({select = true}),
-    ['<Left>'] = cmp.mapping.abort(),
+    ['<Left>'] = cmp.mapping.confirm({select = true}),
+    ['<Right>'] = cmp.mapping.abort(),
     ['<Up>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
     ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
   })
