@@ -94,3 +94,7 @@ require'nvim-treesitter.configs'.setup {
   }
 }
 
+-- nvim-colorizer
+require 'colorizer'.setup()
+
+

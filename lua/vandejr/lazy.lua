@@ -59,6 +59,10 @@ require('lazy').setup({
       'stevearc/dressing.nvim', -- optional for vim.ui.select
     },
     config = true
+  }, {
+    'norcalli/nvim-colorizer.lua',
+    event = 'BufEnter',
+    opts = { '*' }
   }
 })
 
