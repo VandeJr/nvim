@@ -6,8 +6,8 @@ function Colors()
     'catppuccin-macchiato',
     'catppuccin-mocha',
     'kanagawa',
-    'kanagawa-dragon',
-    'kanagawa-wave',
+--  'kanagawa-dragon',
+--  'kanagawa-wave',
     'tokyonight',
     'tokyonight-moon',
     'tokyonight-night',
@@ -70,6 +70,24 @@ cmp.setup({
     ['<Down>'] = cmp.mapping.select_next_item({behavior = 'select'}),
   })
 })
+-- LSPs config
+local lspconfig = require'lspconfig'
+
+lspconfig.tailwindcss.setup({
+  init_options = {
+    userLanguages = {
+      elixir = 'html-eex',
+      eelixir = 'html-eex',
+      heex = 'html-eex',
+    },
+  },
+  root_dir = lspconfig.util.root_pattern('tailwind.config.js', 'tailwind.config.ts', 'postcss.config.js', 'postcss.config.ts', 'package.json', 'node_modules', '.git', 'mix.exs'),
+})
+
+lspconfig.html.setup{
+  filetypes = { 'html', 'heex' }
+}
+
 
 -- Telescope
 local telescope = require('telescope.builtin')
